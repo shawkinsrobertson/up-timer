@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Up Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap:20px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .timer {
+            font-size: 2em;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+            text-align: center;
+        }
+
+        #startBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        #stopBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff4800;
+            color: white;
+            cursor: pointer;
+        }
+
+        #resetBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer" id="timerDisplay">00:00:00</div>
+    <div><button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+<button id="resetBtn">Reset</button></div>
+    <script>
+        // 1. Select the button and the display element
+const startButton = document.getElementById("startBtn");
+const stopButton = document.getElementById("stopBtn");
+const resetButton = document.getElementById("resetBtn");
+const timerDisplay = document.getElementById("timerDisplay");
+
+// 2. Initialize variables outside the function to maintain state
+let totalSeconds = 0;
+let intervalId = null;
+
+// 3. Add the click event listener
+startButton.addEventListener("click", function() {
+    // Prevent starting multiple intervals if the button is clicked repeatedly
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+
+    // 4. Start the interval only when the button is clicked
+    intervalId = setInterval(function() {
+        totalSeconds++;
+        
+        // Format the time (optional: MM:SS)
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        // Update the display
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+    }, 1000); // Run every 1000 milliseconds (1 second)
+
+    // 5. Add the stop button functionality
+    stopButton.addEventListener("click", function() {
+        clearInterval(intervalId); // Stop the interval
+        intervalId = null; // Reset the interval ID
+    });
+
+    // 6. Add the reset button functionality
+    resetButton.addEventListener("click", function() {
+        clearInterval(intervalId); // Stop the interval
+        intervalId = null; // Reset the interval ID
+        totalSeconds = 0; // Reset the total seconds
+        timerDisplay.textContent = "00:00"; // Reset the display
+    });
+});   
+    </script>
+</body>
+</html>
