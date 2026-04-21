@@ -87,11 +87,12 @@ startButton.addEventListener("click", function() {
         totalSeconds++;
         
         // Format the time (optional: MM:SS)
+        const hours = Math.floor(totalSeconds / 3600);
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
         
         // Update the display
-        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
     }, 1000); // Run every 1000 milliseconds (1 second)
 
