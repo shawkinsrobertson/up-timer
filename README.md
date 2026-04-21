@@ -4,7 +4,7 @@
 A simple timer that counts up from a button press. 
 
 
-- Timer that records in MM:SS
+- Timer that records in HH:MM:SS
 - Three buttons: start, stop, and reset
 
 
