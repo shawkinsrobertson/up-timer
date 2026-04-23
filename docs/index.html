@@ -78,23 +78,21 @@ let intervalId = null;
 // 3. Add the click event listener
 startButton.addEventListener("click", function() {
     // Prevent starting multiple intervals if the button is clicked repeatedly
-    if (intervalId) {
-        clearInterval(intervalId);
-    }
-
+    if (intervalId) return;
     // 4. Start the interval only when the button is clicked
     intervalId = setInterval(function() {
         totalSeconds++;
         
         // Format the time (optional: MM:SS)
         const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor(totalSeconds / 60);
+        const minutes = Math.floor(totalSeconds / 60) % 60;
         const seconds = totalSeconds % 60;
         
         // Update the display
         timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
-    }, 1000); // Run every 1000 milliseconds (1 second)
+    }, 1000);
+    }); // Run every 1000 milliseconds (1 second)
 
     // 5. Add the stop button functionality
     stopButton.addEventListener("click", function() {
