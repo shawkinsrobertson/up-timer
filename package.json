@@ -1,0 +1,25 @@
+{
+  "name": "up-timer",
+  "version": "1.0.0",
+  "description": "A simple timer that counts up from a button press.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawkinsrobertson/up-timer.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shawkinsrobertson/up-timer/issues"
+  },
+  "homepage": "https://github.com/shawkinsrobertson/up-timer#readme",
+  "devDependencies": {
+    "vitest": "^5.0.5"
+  }
+}
